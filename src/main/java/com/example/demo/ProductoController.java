@@ -19,16 +19,18 @@ public class ProductoController {
 	
 	@RequestMapping("/")
     public String index() {
-        return "Whattaudoing";
+        return "index of Gondola";
     }
 	
 	@RequestMapping("/barcode/{barCode}/lista/{lista}")
     public Producto get(@PathVariable String barCode, @PathVariable String lista) throws URISyntaxException{		
 		return pr.findById(new ProductoId(barCode, lista)).orElse(null);
     }
+	
 	@PostMapping("/nuevo")
 	public Producto nuevo(@RequestBody Producto nuevoProducto) {
 		return pr.save(nuevoProducto);
 	} 
+	
 
 }
